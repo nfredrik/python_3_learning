@@ -74,10 +74,10 @@ only two dispatches, which is referred to as <em>double dispatching</em>). If yo
 working with two different type hierarchies that are interacting, then you&#8217;ll
 have to have a polymorphic method call in each hierarchy.</p>
 <p>Here&#8217;s an example of multiple dispatching:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># multipleDispatching/PaperScissorsRock.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># MultipleDispatching/PaperScissorsRock.py</span>
 <span class="c"># Demonstration of multiple dispatching.</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">generators</span>
-<span class="kn">import</span> <span class="nn">random</span>
+<span class="k">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">generators</span>
+<span class="k">import</span> <span class="nn">random</span>
 
 <span class="c"># An enumeration type:</span>
 <span class="k">class</span> <span class="nc">Outcome</span><span class="p">:</span>
@@ -161,10 +161,10 @@ table, except that it is spread out through all the classes. This is not very
 easy to maintain if you ever expect to modify the behavior or to add a new
 <strong>Item</strong> class. Instead, it can be more sensible to make the table explicit,
 like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># multipleDispatching/PaperScissorsRock2.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># MultipleDispatching/PaperScissorsRock2.py</span>
 <span class="c"># Multiple dispatching using a table</span>
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">generators</span>
-<span class="kn">import</span> <span class="nn">random</span>
+<span class="k">from</span> <span class="nn">__future__</span> <span class="k">import</span> <span class="n">generators</span>
+<span class="k">import</span> <span class="nn">random</span>
 
 <span class="k">class</span> <span class="nc">Outcome</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
@@ -273,7 +273,7 @@ key just as easily as a single object.</p>
     </div>
     <div class="footer">
       &copy; Copyright 2008, Creative Commons Attribution-Share Alike 3.0.
-      Last updated on Nov 12, 2008.
+      Last updated on Nov 13, 2008.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.5.
     </div>
   </body>

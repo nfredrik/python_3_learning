@@ -69,7 +69,7 @@ the implementation dynamically. However, if you expand your notion of
 <div class="section" id="proxy">
 <h2>Proxy<a class="headerlink" href="#proxy" title="Permalink to this headline">¶</a></h2>
 <p>If we implement <em>Proxy</em> by following the above diagram, it looks like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># fronting/ProxyDemo.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Fronting/ProxyDemo.py</span>
 <span class="c"># Simple demonstration of the Proxy pattern.</span>
 
 <span class="k">class</span> <span class="nc">Implementation</span><span class="p">:</span>
@@ -100,7 +100,7 @@ common interface so that <strong>Implementation</strong> is forced to fulfill al
 that <strong>Proxy</strong> needs to call.</p>
 <p>Of course, in Python we have a delegation mechanism built in, so it makes the
 <strong>Proxy</strong> even simpler to implement:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># fronting/ProxyDemo2.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Fronting/ProxyDemo2.py</span>
 <span class="c"># Simple demonstration of the Proxy pattern.</span>
 
 <span class="k">class</span> <span class="nc">Implementation2</span><span class="p">:</span>
@@ -129,7 +129,7 @@ and not tied to any particular implementation (in Java, a rather complicated
 <h2>State<a class="headerlink" href="#state" title="Permalink to this headline">¶</a></h2>
 <p>The <em>State</em> pattern adds more implementations to <em>Proxy</em>, along with a way to
 switch from one implementation to another during the lifetime of the surrogate:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># fronting/StateDemo.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Fronting/StateDemo.py</span>
 <span class="c"># Simple demonstration of the State pattern.</span>
 
 <span class="k">class</span> <span class="nc">State_d</span><span class="p">:</span>
@@ -265,7 +265,7 @@ through to an implementation object.]]]</p>
     </div>
     <div class="footer">
       &copy; Copyright 2008, Creative Commons Attribution-Share Alike 3.0.
-      Last updated on Nov 12, 2008.
+      Last updated on Nov 13, 2008.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.5.
     </div>
   </body>

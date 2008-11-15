@@ -77,7 +77,7 @@ encounter in your work. The extra constraint is that the trash arrives at the
 trash recycling plant all mixed together. The program must model the sorting of
 that trash. This is where RTTI comes in: you have a bunch of anonymous pieces of
 trash, and the program figures out exactly what type they are:</p>
-<div class="highlight-python"><pre># patternRefactoring/recyclea/RecycleA.py
+<div class="highlight-python"><pre># PatternRefactoring/recyclea/RecycleA.py
 # Recycling with RTTI.
 
 class Trash:
@@ -240,7 +240,7 @@ Often the side effect of cleaning up the code will be a system that has better
 structure and is more flexible.</p>
 <p>Consider first the place where <strong>Trash</strong> objects are created, which is a
 <strong>switch</strong> statement inside <strong>main( )</strong>:</p>
-<div class="highlight-python"><pre># patternRefactoring/clip1.py
+<div class="highlight-python"><pre># PatternRefactoring/clip1.py
     for(int i = 0 i &lt; 30 i++)
         switch((int)(Math.random() * 3)):
             case 0 :
@@ -282,7 +282,7 @@ called <strong>Messenger</strong> that carries all of the necessary information 
 referring to <em>Messenger</em> as a design pattern, but it&#8217;s simple enough that you
 may not choose to elevate it to that status). Here&#8217;s a simple implementation of
 <strong>Messenger</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># patternRefactoring/clip2.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># PatternRefactoring/clip2.py</span>
 <span class="k">class</span> <span class="nc">Messenger</span><span class="p">:</span>
     <span class="c"># Must change this to add another type:</span>
     <span class="n">MAX_NUM</span> <span class="o">=</span> <span class="mf">4</span>
@@ -298,7 +298,7 @@ different information to create a new type of <strong>Trash</strong> object, the
 by adding new data and new constructors, or in the more typical object-oriented
 fashion of subclassing.</p>
 <p>The <strong>factory( )</strong> method for this simple example looks like this:</p>
-<div class="highlight-python"><pre># patternRefactoring/clip3.py
+<div class="highlight-python"><pre># PatternRefactoring/clip3.py
     def factory(messenger):
         switch(messenger.type):
             default: # To quiet the compiler
@@ -317,7 +317,7 @@ imagine a more complicated system in which <strong>factory( )</strong> uses an e
 algorithm. The point is that it&#8217;s now hidden away in one place, and you know to
 come to this place when you add new types.</p>
 <p>The creation of new objects is now much simpler in <strong>main( )</strong>:</p>
-<div class="highlight-python"><pre># patternRefactoring/clip4.py
+<div class="highlight-python"><pre># PatternRefactoring/clip4.py
     for(int i = 0 i &lt; 30 i++)
         bin.add(
           Trash.factory(
@@ -379,7 +379,7 @@ the prototypes dynamically like this, the <strong>Trash</strong> class doesn&#82
 what types it is working with, so it doesn&#8217;t need any modifications when you add
 new types. This allows it to be easily reused throughout the rest of the
 chapter:</p>
-<div class="highlight-python"><pre>   # patternRefactoring/trash/Trash.py
+<div class="highlight-python"><pre>   # PatternRefactoring/trash/Trash.py
    # Base class for Trash recycling examples.
 
    class Trash:
@@ -501,7 +501,7 @@ subclass of <strong>Trash</strong> is that it contain a constructor that takes a
 argument. Java reflection handles everything else.</p>
 <p>Here are the different types of <strong>Trash</strong>, each in their own file but part of
 the <strong>Trash</strong> package (again, to facilitate reuse within the chapter):</p>
-<div class="highlight-python"><pre># patternRefactoring/trash/Aluminum.py
+<div class="highlight-python"><pre># PatternRefactoring/trash/Aluminum.py
 # The Aluminum class with prototyping.
 
 class Aluminum(Trash):
@@ -512,7 +512,7 @@ class Aluminum(Trash):
         self.val = newVal::
 
 
-# patternRefactoring/trash/Paper.py
+# PatternRefactoring/trash/Paper.py
 # The Paper class with prototyping.
 
 class Paper(Trash):
@@ -523,7 +523,7 @@ class Paper(Trash):
         self.val = newVal::
 
 
-# patternRefactoring/trash/Glass.py
+# PatternRefactoring/trash/Glass.py
 # The Glass class with prototyping.
 
 class Glass(Trash):
@@ -534,7 +534,7 @@ class Glass(Trash):
         self.val = newVal</pre>
 </div>
 <p>And here&#8217;s a new type of <strong>Trash</strong>:</p>
-<div class="highlight-python"><pre># patternRefactoring/trash/Cardboard.py
+<div class="highlight-python"><pre># PatternRefactoring/trash/Cardboard.py
 # The Cardboard class with prototyping.
 
 class Cardboard(Trash):
@@ -552,7 +552,7 @@ of these classes.</p>
 <p>The information about <strong>Trash</strong> objects will be read from an outside file. The
 file has all of the necessary information about each piece of trash on a single
 line in the form <strong>Trash:weight</strong>, such as:</p>
-<div class="highlight-python"><pre># patternRefactoring/trash/Trash.dat
+<div class="highlight-python"><pre># PatternRefactoring/trash/Trash.dat
 patternRefactoring.trash.Glass:54
 patternRefactoring.trash.Paper:22
 patternRefactoring.trash.Paper:11
@@ -598,7 +598,7 @@ turned into a <strong>double</strong> with the <strong>static Double.valueOf( )<
 <strong>trim( )</strong> method removes white space at both ends of a string.</p>
 <p>The <strong>Trash</strong> parser is placed in a separate file since it will be reused
 throughout this chapter:</p>
-<div class="highlight-python"><pre># patternRefactoring/trash/ParseTrash.py
+<div class="highlight-python"><pre># PatternRefactoring/trash/ParseTrash.py
 # Parse file contents into Trash objects,
 # placing each into a Fillable holder.
 
@@ -622,7 +622,7 @@ class ParseTrash:
 However, other types of containers can be used as well. To allow for this, the
 first version of <strong>fillBin( )</strong> takes a reference to a <strong>Fillable</strong>, which is
 simply an <strong>interface</strong> that supports a method called <strong>addTrash( )</strong>:</p>
-<div class="highlight-python"><pre># patternRefactoring/trash/Fillable.py
+<div class="highlight-python"><pre># PatternRefactoring/trash/Fillable.py
 # Any object that can be filled with Trash.
 
 class Fillable:
@@ -633,7 +633,7 @@ class Fillable:
 <strong>Collection</strong> is used in most of the examples, it makes sense to add a second
 overloaded <strong>fillBin( )</strong> method that takes a <strong>Collection</strong>. Any <strong>Collection</strong>
 can then be used as a <strong>Fillable</strong> object using an adapter class:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># patternRefactoring/trash/FillableCollection.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># PatternRefactoring/trash/FillableCollection.py</span>
 <span class="c"># Adapter that makes a Collection Fillable.</span>
 
 <span class="k">class</span> <span class="nc">FillableCollection</span><span class="p">(</span><span class="n">Fillable</span><span class="p">):</span>
@@ -660,7 +660,7 @@ Alternatively, the container class can provide its own adapter that implements
 <h3>Recycling with Prototyping<a class="headerlink" href="#recycling-with-prototyping" title="Permalink to this headline">¶</a></h3>
 <p>Now you can see the revised version of <strong>RecycleA.py</strong> using the prototyping
 technique:</p>
-<div class="highlight-python"><pre># patternRefactoring/recycleap/RecycleAP.py
+<div class="highlight-python"><pre># PatternRefactoring/recycleap/RecycleAP.py
 # Recycling with RTTI and Prototypes.
 
 class RecycleAP(UnitTest):
@@ -764,7 +764,7 @@ your choice. This tells the <strong>ArrayList</strong> what type it is supposed 
 the <strong>grab( )</strong> method uses <strong>Class BinType</strong> and RTTI to see if the <strong>Trash</strong>
 object you&#8217;ve handed it matches the type it&#8217;s supposed to grab.</p>
 <p>Here is the new version of the program:</p>
-<div class="highlight-python"><pre># patternRefactoring/recycleb/RecycleB.py
+<div class="highlight-python"><pre># PatternRefactoring/recycleb/RecycleB.py
 # Containers that grab objects of interest.
 
 # A container that admits only the right type
@@ -882,7 +882,7 @@ types of <strong>Aluminum</strong>, <strong>Paper</strong>, <strong>Glass</stron
 approach that will be taken here.</p>
 <p>Most of the classes in this design must be <strong>public</strong>, so they are placed in
 their own files. Here&#8217;s the interface:</p>
-<div class="highlight-python"><pre># patternRefactoring/doubledispatch/TypedBinMember.py
+<div class="highlight-python"><pre># PatternRefactoring/doubledispatch/TypedBinMember.py
 # An class for adding the double
 # dispatching method to the trash hierarchy
 # without modifying the original hierarchy.
@@ -894,7 +894,7 @@ class TypedBinMember:
 <p>In each particular subtype of <strong>Aluminum</strong>, <strong>Paper</strong>, <strong>Glass,</strong> and
 <strong>Cardboard</strong>, the <strong>addToBin( )</strong> method in the <strong>interface TypedBinMember</strong> is
 implemented, but it <em>looks</em> like the code is exactly the same in each case:</p>
-<div class="highlight-python"><pre># patternRefactoring/doubledispatch/DDAluminum.py
+<div class="highlight-python"><pre># PatternRefactoring/doubledispatch/DDAluminum.py
 # Aluminum for double dispatching.
 
 class DDAluminum(Aluminum, TypedBinMember):
@@ -906,7 +906,7 @@ class DDAluminum(Aluminum, TypedBinMember):
         return False::
 
 
-# patternRefactoring/doubledispatch/DDPaper.py
+# PatternRefactoring/doubledispatch/DDPaper.py
 # Paper for double dispatching.
 
 class DDPaper(Paper, TypedBinMember):
@@ -918,7 +918,7 @@ class DDPaper(Paper, TypedBinMember):
         return False::
 
 
-# patternRefactoring/doubledispatch/DDGlass.py
+# PatternRefactoring/doubledispatch/DDGlass.py
 # Glass for double dispatching.
 
 class DDGlass(Glass, TypedBinMember):
@@ -930,7 +930,7 @@ class DDGlass(Glass, TypedBinMember):
         return False::
 
 
-# patternRefactoring/doubledispatch/DDCardboard.py
+# PatternRefactoring/doubledispatch/DDCardboard.py
 # Cardboard for double dispatching.
 
 class DDCardboard(Cardboard, TypedBinMember):
@@ -954,7 +954,7 @@ resolves the call to the proper overloaded version of <strong>add( )</strong>. B
 up calling a different method depending on the type of <strong>TypedBin</strong> that&#8217;s
 currently selected. That is the second dispatch.</p>
 <p>Here&#8217;s the base class for <strong>TypedBin</strong>:</p>
-<div class="highlight-python"><pre># patternRefactoring/doubledispatch/TypedBin.py
+<div class="highlight-python"><pre># PatternRefactoring/doubledispatch/TypedBin.py
 # A container for the second dispatch.
 
 class TypedBin:
@@ -995,7 +995,7 @@ the <strong>addToBin( )</strong> method in <strong>Trash</strong>.)</p>
 <p>Since for this example the trash types have been customized and placed in a
 different directory, you&#8217;ll need a different trash data file to make it work.
 Here&#8217;s a possible <strong>DDTrash.dat</strong>:</p>
-<div class="highlight-python"><pre># patternRefactoring/doubledispatch/DDTrash.dat
+<div class="highlight-python"><pre># PatternRefactoring/doubledispatch/DDTrash.dat
 DDGlass:54
 DDPaper:22
 DDPaper:11
@@ -1032,7 +1032,7 @@ DDAluminum:36
 DDCardboard:22</pre>
 </div>
 <p>Here&#8217;s the rest of the program:</p>
-<div class="highlight-python"><pre># patternRefactoring/doubledispatch/DoubleDispatch.py
+<div class="highlight-python"><pre># PatternRefactoring/doubledispatch/DoubleDispatch.py
 # Using multiple dispatching to handle more
 # than one unknown type during a method call.
 
@@ -1157,7 +1157,7 @@ sum the price, and <strong>WeightVisitor</strong> to keep track of the weights.<
 recycling program.</p>
 <p>As with <strong>DoubleDispatch.py</strong>, the <strong>Trash</strong> class is left alone and a new
 interface is created to add the <strong>accept( )</strong> method:</p>
-<div class="highlight-python"><pre># patternRefactoring/trashvisitor/Visitable.py
+<div class="highlight-python"><pre># PatternRefactoring/trashvisitor/Visitable.py
 # An class to add visitor functionality
 # to the Trash hierarchy without
 # modifying the base class.
@@ -1168,7 +1168,7 @@ class Visitable:
 </div>
 <p>Since there&#8217;s nothing concrete in the <strong>Visitor</strong> base class, it can be created
 as an <strong>interface</strong>:</p>
-<div class="highlight-python"><pre># patternRefactoring/trashvisitor/Visitor.py
+<div class="highlight-python"><pre># PatternRefactoring/trashvisitor/Visitor.py
 # The base class for visitors.
 
 class Visitor:
@@ -1183,7 +1183,7 @@ class Visitor:
 dispatching and create new subtypes of <strong>Aluminum</strong>, <strong>Paper</strong>, <strong>Glass</strong>, and
 <strong>Cardboard</strong> that implement the <strong>accept( )</strong> method. For example, the new
 <strong>Visitable Aluminum</strong> would look like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># patternRefactoring/trashvisitor/VAluminum.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># PatternRefactoring/trashvisitor/VAluminum.py</span>
 <span class="c"># Taking the previous approach of creating a</span>
 <span class="c"># specialized Aluminum for the visitor pattern.</span>
 
@@ -1211,7 +1211,7 @@ appear to. However, reflection allows you to determine type information at run
 time, and it turns out to solve many problems that would seem to require
 templates (albeit not as simply). Here&#8217;s the decorator that does the trick
 <a class="footnote-reference" href="#id2" id="id1">[1]</a>:</p>
-<div class="highlight-python"><pre># patternRefactoring/trashvisitor/VisitableDecorator.py
+<div class="highlight-python"><pre># PatternRefactoring/trashvisitor/VisitableDecorator.py
 # A decorator that adapts the generic Trash
 # classes to the visitor pattern.
 
@@ -1239,7 +1239,7 @@ class VisitableDecorator(Trash, Visitable):
 automatically decorates the objects as they are being created from the original
 <strong>Trash.dat</strong> file. But this might as well be a decorator itself, decorating any
 kind of <strong>Fillable</strong>:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># patternRefactoring/trashvisitor/FillableVisitor.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># PatternRefactoring/trashvisitor/FillableVisitor.py</span>
 <span class="c"># Adapter Decorator that adds the visitable</span>
 <span class="c"># decorator as the Trash objects are</span>
 <span class="c"># being created.</span>
@@ -1254,7 +1254,7 @@ kind of <strong>Fillable</strong>:</p>
 that haven&#8217;t yet been created.</p>
 <p>The rest of the program creates specific <strong>Visitor</strong> types and sends them
 through a single list of <strong>Trash</strong> objects:</p>
-<div class="highlight-python"><pre>   # patternRefactoring/trashvisitor/TrashVisitor.py
+<div class="highlight-python"><pre>   # PatternRefactoring/trashvisitor/TrashVisitor.py
    # The "visitor" pattern with VisitableDecorators.
 
    # Specific group of algorithms packaged
@@ -1412,7 +1412,7 @@ adapts.</p>
 <p>Our example will again build on the structure of the <strong>Trash</strong> types in
 <strong>package patternRefactoring.Trash</strong> (and the <strong>Trash.dat</strong> file used there can
 be used here without change):</p>
-<div class="highlight-python"><pre># patternRefactoring/dynatrash/DynaTrash.py
+<div class="highlight-python"><pre># PatternRefactoring/dynatrash/DynaTrash.py
 # Using a Map of Lists and RTTI
 # to automatically sort trash into
 # ArrayLists. This solution, despite the
@@ -1663,7 +1663,7 @@ that I gave in Prague.</td></tr>
     </div>
     <div class="footer">
       &copy; Copyright 2008, Creative Commons Attribution-Share Alike 3.0.
-      Last updated on Nov 12, 2008.
+      Last updated on Nov 13, 2008.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.5.
     </div>
   </body>

@@ -115,9 +115,9 @@ This also provides easier translation from Java code that uses these libraries.<
 a <strong>synchronized</strong> keyword that provides built-in support for thread
 synchronization. We could certainly accomplish the same thing by hand, using
 code like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># util/ToSynch.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Util/ToSynch.py</span>
 
-<span class="kn">import</span> <span class="nn">threading</span>
+<span class="k">import</span> <span class="nn">threading</span>
 <span class="k">class</span> <span class="nc">ToSynch</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mutex</span> <span class="o">=</span> <span class="n">threading</span><span class="o">.</span><span class="n">RLock</span><span class="p">()</span>
@@ -133,10 +133,10 @@ code like this:</p>
 </div>
 <p>But this rapidly becomes tedious to write and to read. Peter Norvig provided me
 with a much nicer solution:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># util/Synchronization.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Util/Synchronization.py</span>
 <span class="sd">&#39;&#39;&#39;Simple emulation of Java&#39;s &#39;synchronized&#39;</span>
 <span class="sd">keyword, from Peter Norvig.&#39;&#39;&#39;</span>
-<span class="kn">import</span> <span class="nn">threading</span>
+<span class="k">import</span> <span class="nn">threading</span>
 
 <span class="k">def</span> <span class="nf">synchronized</span><span class="p">(</span><span class="n">method</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
@@ -189,8 +189,8 @@ in every class that uses <strong>synchronized( )</strong>. This can be created b
 class author, but it&#8217;s more consistent to use inheritance, so the base class
 <strong>Synchronization</strong> is provided.</p>
 <p>Here&#8217;s a simple test of the <strong>Synchronization</strong> module:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># util/TestSynchronization.py</span>
-<span class="kn">from</span> <span class="nn">Synchronization</span> <span class="kn">import</span> <span class="o">*</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Util/TestSynchronization.py</span>
+<span class="k">from</span> <span class="nn">Synchronization</span> <span class="k">import</span> <span class="o">*</span>
 
 <span class="c"># To use for a method:</span>
 <span class="k">class</span> <span class="nc">C</span><span class="p">(</span><span class="n">Synchronization</span><span class="p">):</span>
@@ -245,9 +245,9 @@ masse, and class <strong>E</strong> uses the convenience function to synchronize
 <strong>g</strong>. Note that since <strong>m</strong> ends up being synchronized twice, it will be
 entered and left twice for every call, which isn&#8217;t very desirable [there may be
 a fix for this]:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># util/Observer.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Util/Observer.py</span>
 <span class="c"># Class support for &quot;observer&quot; pattern.</span>
-<span class="kn">from</span> <span class="nn">Synchronization</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="k">from</span> <span class="nn">Synchronization</span> <span class="k">import</span> <span class="o">*</span>
 
 <span class="k">class</span> <span class="nc">Observer</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">observable</span><span class="p">,</span> <span class="n">arg</span><span class="p">):</span>
@@ -303,7 +303,7 @@ a fix for this]:</p>
 </pre></div>
 </div>
 <p>Using this library, here is an example of the observer pattern:</p>
-<div class="highlight-python"><pre># observer/ObservedFlower.py
+<div class="highlight-python"><pre># Observer/ObservedFlower.py
 # Demonstration of "observer" pattern.
 import sys
 sys.path += ['../util']
@@ -449,7 +449,7 @@ the other boxes are notified that a change has been made because the
 one that was clicked, and if so it changes its color to match the clicked box.
 (NOTE: this example has not been converted. See further down for a version that
 has the GUI but not the Observers, in PythonCard.):</p>
-<div class="highlight-python"><pre># observer/BoxObserver.py
+<div class="highlight-python"><pre># Observer/BoxObserver.py
 # Demonstration of Observer pattern using
 # Java's built-in observer classes.
 
@@ -552,7 +552,7 @@ notification behavior then.</p>
 <p>Here is a version of the above that doesn&#8217;t use the Observer pattern, written by
 Kevin Altis using PythonCard, and placed here as a starting point for a
 translation that does include Observer:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># observer/BoxObserverPythonCard.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Observer/BoxObserverPythonCard.py</span>
 <span class="sd">&quot;&quot;&quot; Written by Kevin Altis as a first-cut for</span>
 <span class="sd">converting BoxObserver to Python. The Observer</span>
 <span class="sd">hasn&#39;t been integrated yet.</span>
@@ -562,8 +562,8 @@ translation that does include Observer:</p>
 <span class="sd">Install PythonCard. See:</span>
 <span class="sd">http://pythoncard.sourceforge.net</span>
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">PythonCardPrototype</span> <span class="kn">import</span> <span class="n">log</span><span class="p">,</span> <span class="n">model</span>
-<span class="kn">import</span> <span class="nn">random</span>
+<span class="k">from</span> <span class="nn">PythonCardPrototype</span> <span class="k">import</span> <span class="n">log</span><span class="p">,</span> <span class="n">model</span>
+<span class="k">import</span> <span class="nn">random</span>
 
 <span class="n">GRID</span> <span class="o">=</span> <span class="mf">8</span>
 
@@ -640,7 +640,7 @@ translation that does include Observer:</p>
 </pre></div>
 </div>
 <p>This is the resource file for running the program (see PythonCard for details):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># observer/BoxObserver.rsrc.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Observer/BoxObserver.rsrc.py</span>
 <span class="p">{</span><span class="s">&#39;stack&#39;</span><span class="p">:{</span><span class="s">&#39;type&#39;</span><span class="p">:</span><span class="s">&#39;Stack&#39;</span><span class="p">,</span>
           <span class="s">&#39;name&#39;</span><span class="p">:</span><span class="s">&#39;BoxObserver&#39;</span><span class="p">,</span>
     <span class="s">&#39;backgrounds&#39;</span><span class="p">:</span> <span class="p">[</span>
@@ -745,7 +745,7 @@ the first one that was chosen.</li>
     </div>
     <div class="footer">
       &copy; Copyright 2008, Creative Commons Attribution-Share Alike 3.0.
-      Last updated on Nov 12, 2008.
+      Last updated on Nov 13, 2008.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.5.
     </div>
   </body>

@@ -145,17 +145,15 @@ slightly better than chaos. If you change nothing else, add automated testing.</
 output of each program (as a string) to its listing:</p>
 <div class="highlight-python"><div class="highlight"><pre><span class="c"># SanityCheck.py</span>
 <span class="c">#! /usr/bin/env python</span>
-<span class="kn">import</span> <span class="nn">string</span><span class="o">,</span> <span class="nn">glob</span><span class="o">,</span> <span class="nn">os</span>
-<span class="c"># Do not include the following in the automatic</span>
-<span class="c"># tests:</span>
+<span class="k">import</span> <span class="nn">string</span><span class="o">,</span> <span class="nn">glob</span><span class="o">,</span> <span class="nn">os</span>
+<span class="c"># Do not include the following in the automatic tests:</span>
 <span class="n">exclude</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;SanityCheck.py&quot;</span><span class="p">,</span> <span class="s">&quot;BoxObserver.py&quot;</span><span class="p">,)</span>
 
 <span class="k">def</span> <span class="nf">visitor</span><span class="p">(</span><span class="n">arg</span><span class="p">,</span> <span class="n">dirname</span><span class="p">,</span> <span class="n">names</span><span class="p">):</span>
     <span class="nb">dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>
     <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">dirname</span><span class="p">)</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">pyprogs</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">&#39;*.py&#39;</span><span class="p">)</span>
-                   <span class="k">if</span> <span class="n">p</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">exclude</span> <span class="p">]</span>
+        <span class="n">pyprogs</span> <span class="o">=</span> <span class="p">[</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s">&#39;*.py&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">p</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">exclude</span> <span class="p">]</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">pyprogs</span><span class="p">:</span> <span class="k">return</span>
         <span class="k">print</span><span class="p">(</span><span class="s">&#39;[&#39;</span> <span class="o">+</span> <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span> <span class="o">+</span> <span class="s">&#39;]&#39;</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">program</span> <span class="ow">in</span> <span class="n">pyprogs</span><span class="p">:</span>
@@ -163,13 +161,11 @@ output of each program (as a string) to its listing:</p>
             <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s">&quot;python </span><span class="si">%s</span><span class="s"> &gt; tmp&quot;</span> <span class="o">%</span> <span class="n">program</span><span class="p">)</span>
             <span class="nb">file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">program</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
             <span class="n">output</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;tmp&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-            <span class="c"># Append output if it&#39;s not already there:</span>
-            <span class="k">if</span> <span class="nb">file</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;output = &#39;&#39;&#39;&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mf">1</span> <span class="ow">and</span> \
-              <span class="nb">len</span><span class="p">(</span><span class="n">output</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0</span><span class="p">:</span>
+            <span class="c"># Append program output if it&#39;s not already there:</span>
+            <span class="k">if</span> <span class="nb">file</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&quot;output = &#39;&#39;&#39;&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="o">-</span><span class="mf">1</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">output</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">0</span><span class="p">:</span>
                 <span class="n">divider</span> <span class="o">=</span> <span class="s">&#39;#&#39;</span> <span class="o">*</span> <span class="mf">50</span> <span class="o">+</span> <span class="s">&#39;</span><span class="se">\n</span><span class="s">&#39;</span>
                 <span class="nb">file</span> <span class="o">=</span> <span class="nb">file</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39;#&#39;</span> <span class="o">+</span> <span class="s">&#39;:~&#39;</span><span class="p">,</span> <span class="s">&#39;#&lt;hr&gt;</span><span class="se">\n</span><span class="s">&#39;</span><span class="p">)</span>
-                <span class="nb">file</span> <span class="o">+=</span> <span class="s">&quot;output = &#39;&#39;&#39;</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">+</span> \
-                  <span class="nb">open</span><span class="p">(</span><span class="s">&#39;tmp&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;&#39;&#39;&#39;</span><span class="se">\n</span><span class="s">&quot;</span>
+                <span class="nb">file</span> <span class="o">+=</span> <span class="s">&quot;output = &#39;&#39;&#39;</span><span class="se">\n</span><span class="s">&quot;</span> <span class="o">+</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;tmp&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;&#39;&#39;&#39;</span><span class="se">\n</span><span class="s">&quot;</span>
                 <span class="nb">open</span><span class="p">(</span><span class="n">program</span><span class="p">,</span><span class="s">&#39;w&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="nb">file</span><span class="p">)</span>
     <span class="k">finally</span><span class="p">:</span>
         <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="nb">dir</span><span class="p">)</span>
@@ -205,20 +201,19 @@ one covering as much or as little as you find necessary.</p>
 <p>To create a set of tests, you start by making a <strong>static</strong> inner class inside
 the class you wish to test (your test code may also test other classes; it&#8217;s up
 to you). This test code is distinguished by inheriting from <strong>UnitTest</strong>:</p>
-<div class="highlight-python"><pre># unitTesting/UnitTest.py
+<div class="highlight-python"><pre># UnitTesting/UnitTest.py
 # The basic unit testing class
 
 class UnitTest:
     testID = ""
-    static List errors = ArrayList()
-    # Override cleanup() if test object
-    # creation allocates non-memory
+    errors = []
+    # Override cleanup() if test object creation allocates non-memory
     # resources that must be cleaned up:
-    def cleanup(self):
-    # Verify the truth of a condition:
-    def affirm(boolean condition):
+    def cleanup(self): pass
+    # Verify a condition is true:
+    def affirm(condition):
         if(!condition)
-            errors.add("failed: " + testID)</pre>
+            UnitTest.errors.append("failed: " + UnitTest.testID)</pre>
 </div>
 <p>The only testing method [[ So far ]] is <strong>affirm( )</strong> <a class="footnote-reference" href="#id4" id="id2">[2]</a>, which is
 <strong>protected</strong> so that it can be used from the inheriting class. All this method
@@ -239,7 +234,7 @@ test object will allocate non-memory resources, in which case you must override
 <h2>Writing Tests<a class="headerlink" href="#writing-tests" title="Permalink to this headline">¶</a></h2>
 <p>Writing tests becomes very simple. Here&#8217;s an example that creates the necessary
 <strong>static</strong> inner class and performs trivial tests:</p>
-<div class="highlight-python"><pre># unitTesting/TestDemo.py
+<div class="highlight-python"><pre># UnitTesting/TestDemo.py
 # Creating a test
 
 class TestDemo:
@@ -317,7 +312,7 @@ if you do this, you tend to keep such code around rather than putting it in and
 stripping it out as is typically done with tracing code.</p>
 <p>If you need to add a test to a class derived from one that already has a test
 class, it&#8217;s no problem, as you can see here:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># unitTesting/TestDemo2.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># UnitTesting/TestDemo2.py</span>
 <span class="c"># Inheriting from a class that</span>
 <span class="c"># already has a test is no problem.</span>
 
@@ -365,7 +360,7 @@ test class in a separate directory than the class it tests, otherwise it will
 have package access to the elements of the class being tested. That is, you&#8217;ll
 be able to access <strong>protected</strong> and <strong>friendly</strong> elements of the class being
 tested. Here&#8217;s an example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># unitTesting/Testable.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># UnitTesting/Testable.py</span>
 
 <span class="k">class</span> <span class="nc">Testable</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">f1</span><span class="p">():</span> <span class="k">pass</span>
@@ -378,7 +373,7 @@ tested. Here&#8217;s an example:</p>
 programmer is <strong>f4( )</strong>. However, if you put your black-box test in the same
 directory, it automatically becomes part of the same package (in this case, the
 default package since none is specified) and then has inappropriate access:</p>
-<div class="highlight-python"><pre># unitTesting/TooMuchAccess.py
+<div class="highlight-python"><pre># UnitTesting/TooMuchAccess.py
 
 class TooMuchAccess(UnitTest):
     Testable tst = Testable()
@@ -393,7 +388,7 @@ package from <strong>Testable.py</strong>). Of course, when you do this, then <s
 must be in its own package, so that it can be imported (note that it is also
 possible to import a &#8220;package-less&#8221; class by giving the class name in the
 <strong>import</strong> statement and ensuring that the class is in your CLASSPATH):</p>
-<div class="highlight-python"><pre># unitTesting/testable/Testable.py
+<div class="highlight-python"><pre># UnitTesting/testable/Testable.py
 package c02.testable
 
 class Testable:
@@ -404,7 +399,7 @@ class Testable:
 </div>
 <p>Here&#8217;s the black-box test in its own package, showing how only public methods
 may be called:</p>
-<div class="highlight-python"><pre># unitTesting/BlackBoxTest.py
+<div class="highlight-python"><pre># UnitTesting/BlackBoxTest.py
 
 class BlackBoxTest(UnitTest):
     Testable tst = Testable()
@@ -426,7 +421,7 @@ effort).</p>
 <h2>Running tests<a class="headerlink" href="#running-tests" title="Permalink to this headline">¶</a></h2>
 <p>The program that runs the tests makes significant use of reflection so that
 writing the tests can be simple for the client programmer:</p>
-<div class="highlight-python"><pre># unitTesting/RunUnitTests.py
+<div class="highlight-python"><pre># UnitTesting/RunUnitTests.py
 # Discovering the unit test
 # class and running each test.
 
@@ -610,7 +605,7 @@ in JDK 1.4 when assertions were added to the language.</td></tr>
     </div>
     <div class="footer">
       &copy; Copyright 2008, Creative Commons Attribution-Share Alike 3.0.
-      Last updated on Nov 12, 2008.
+      Last updated on Nov 13, 2008.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.5.
     </div>
   </body>

@@ -52,7 +52,7 @@ provide one and only one object of a particular type. To accomplish this, you
 must take control of object creation out of the hands of the programmer. One
 convenient way to do this is to delegate to a single instance of a private
 nested inner class:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># singleton/SingletonPattern.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Singleton/SingletonPattern.py</span>
 
 <span class="k">class</span> <span class="nc">OnlyOne</span><span class="p">:</span>
     <span class="k">class</span> <span class="nc">__OnlyOne</span><span class="p">:</span>
@@ -110,7 +110,7 @@ If this is an issue, you can create a solution involving a check-out and check-
 in of the shared objects.</p>
 <p>A variation on this technique uses the class method <strong>__new__</strong> added in Python
 2.2:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># singleton/NewSingleton.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Singleton/NewSingleton.py</span>
 
 <span class="k">class</span> <span class="nc">OnlyOne</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="k">class</span> <span class="nc">__OnlyOne</span><span class="p">:</span>
@@ -156,7 +156,7 @@ long as they all refer to the same state information then you achieve the effect
 of Singleton. He accomplishes this with what he calls the <em>Borg</em> <a class="footnote-reference" href="#id4" id="id1">[1]</a>, which is
 accomplished by setting all the <strong>__dict__</strong>s to the same static piece of
 storage:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># singleton/BorgSingleton.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Singleton/BorgSingleton.py</span>
 <span class="c"># Alex Martelli&#39;s &#39;Borg&#39;</span>
 
 <span class="k">class</span> <span class="nc">Borg</span><span class="p">:</span>
@@ -198,7 +198,7 @@ elegant. In the former case, you must wire in <em>Singleton</em> behavior to eac
 your classes, but <em>Borg</em> is designed to be easily reused through inheritance.</p>
 <p>A simpler version <a class="footnote-reference" href="#id5" id="id2">[2]</a> of this takes advantage of the fact that there&#8217;s only one
 instance of a class variable:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># singleton/ClassVariableSingleton.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Singleton/ClassVariableSingleton.py</span>
 <span class="k">class</span> <span class="nc">SingleTone</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
     <span class="n">__instance</span> <span class="o">=</span> <span class="bp">None</span>
     <span class="k">def</span> <span class="nf">__new__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span> <span class="n">val</span><span class="p">):</span>
@@ -212,7 +212,7 @@ instance of a class variable:</p>
 using metaclasses. The first approach could be thought of as a <em>class decorator</em>
 (decorators will be defined later in the book), because it takes the class of
 interest and adds functionality to it by wrapping it in another class:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># singleton/SingletonDecorator.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Singleton/SingletonDecorator.py</span>
 <span class="k">class</span> <span class="nc">SingletonDecorator</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">klass</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">klass</span> <span class="o">=</span> <span class="n">klass</span>
@@ -241,7 +241,7 @@ interest and adds functionality to it by wrapping it in another class:</p>
 <p>The second approach uses metaclasses, a topic I do not yet understand but which
 looks very interesting and powerful indeed (note that Python 2.2 has
 improved/simplified the metaclass syntax, and so this example may change):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># singleton/SingletonMetaClass.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Singleton/SingletonMetaClass.py</span>
 <span class="k">class</span> <span class="nc">SingletonMetaClass</span><span class="p">(</span><span class="nb">type</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">cls</span><span class="p">,</span><span class="n">name</span><span class="p">,</span><span class="n">bases</span><span class="p">,</span><span class="nb">dict</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">SingletonMetaClass</span><span class="p">,</span><span class="n">cls</span><span class="p">)</span>\
@@ -368,7 +368,7 @@ a hive-mind collective: &#8220;we are all one.&#8221;</td></tr>
     </div>
     <div class="footer">
       &copy; Copyright 2008, Creative Commons Attribution-Share Alike 3.0.
-      Last updated on Nov 12, 2008.
+      Last updated on Nov 13, 2008.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.5.
     </div>
   </body>
