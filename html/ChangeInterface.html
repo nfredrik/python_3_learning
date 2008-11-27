@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Changing the Interface &mdash; Python 3 Patterns & Idioms</title>
+    <title>Changing the Interface &mdash; Python 3 Patterns, Recipes and Idioms</title>
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="Python 3 Patterns & Idioms" href="index.html" />
+    <link rel="top" title="Python 3 Patterns, Recipes and Idioms" href="index.html" />
     <link rel="next" title="Table-Driven Code: Configuration Flexibility" href="TableDriven.html" />
     <link rel="prev" title="Function Objects" href="FunctionObjects.html" />
   </head>
@@ -36,7 +36,7 @@
         <li class="right" >
           <a href="FunctionObjects.html" title="Function Objects"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Python 3 Patterns & Idioms</a> &raquo;</li>
+        <li><a href="index.html">Python 3 Patterns, Recipes and Idioms</a> &raquo;</li>
       </ul>
     </div>
     <div class="document">
@@ -57,7 +57,7 @@ comfortable way to deal with a library or bundle of resources.</p>
 <p>When you&#8217;ve got <em>this</em>, and you need <em>that</em>, <em>Adapter</em> solves the problem. The
 only requirement is to produce a <em>that</em>, and there are a number of ways you can
 accomplish this adaptation:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># changeInterface/Adapter.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># ChangeInterface/Adapter.py</span>
 <span class="c"># Variations on the Adapter pattern.</span>
 
 <span class="k">class</span> <span class="nc">WhatIHave</span><span class="p">:</span>
@@ -135,7 +135,7 @@ the client programmer and that only presents what&#8217;s necessary.</p>
 <p>Façade is often implemented as singleton abstract factory. Of course, you can
 easily get this effect by creating a class containing <strong>static</strong> factory
 methods:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># changeInterface/Facade.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># ChangeInterface/Facade.py</span>
 <span class="k">class</span> <span class="nc">A</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span> <span class="k">pass</span>
 <span class="k">class</span> <span class="nc">B</span><span class="p">:</span>
@@ -180,7 +180,7 @@ objects into a dictionary as key-value pairs.</li>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="index.html">
-              <img class="logo" src="_static/Logo.png" alt="Logo"/>
+              <img class="logo" src="_static/cover.png" alt="Logo"/>
             </a></p>
     <font color="Red">This book is in early development; you will find parts that are incorrect &amp; incomplete.</font>
     
@@ -230,12 +230,12 @@ objects into a dictionary as key-value pairs.</li>
         <li class="right" >
           <a href="FunctionObjects.html" title="Function Objects"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Python 3 Patterns & Idioms</a> &raquo;</li>
+        <li><a href="index.html">Python 3 Patterns, Recipes and Idioms</a> &raquo;</li>
       </ul>
     </div>
     <div class="footer">
       &copy; Copyright 2008, Creative Commons Attribution-Share Alike 3.0.
-      Last updated on Nov 12, 2008.
+      Last updated on Nov 27, 2008.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.5.
     </div>
   </body>

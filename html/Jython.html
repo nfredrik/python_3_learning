@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Jython &mdash; Python 3 Patterns & Idioms</title>
+    <title>Jython &mdash; Python 3 Patterns, Recipes and Idioms</title>
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="Python 3 Patterns & Idioms" href="index.html" />
+    <link rel="top" title="Python 3 Patterns, Recipes and Idioms" href="index.html" />
     <link rel="next" title="Part II: Idioms" href="Part2.html" />
     <link rel="prev" title="Coroutines &amp; Concurrency" href="CoroutinesAndConcurrency.html" />
   </head>
@@ -36,7 +36,7 @@
         <li class="right" >
           <a href="CoroutinesAndConcurrency.html" title="Coroutines &amp; Concurrency"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Python 3 Patterns & Idioms</a> &raquo;</li>
+        <li><a href="index.html">Python 3 Patterns, Recipes and Idioms</a> &raquo;</li>
       </ul>
     </div>
     <div class="document">
@@ -117,7 +117,7 @@ have some sort of functionality) and a time when the event is supposed to run.
 The constructor initializes these fields, and then adds the new <strong>Event</strong> object
 to a static list called <strong>events</strong> (defining it in the class, but outside of any
 methods, is what makes it static):</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># jython/GreenHouseLanguage.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Jython/GreenHouseLanguage.py</span>
 
 <span class="k">class</span> <span class="nc">Event</span><span class="p">:</span>
     <span class="n">events</span> <span class="o">=</span> <span class="p">[]</span> <span class="c"># static</span>
@@ -192,7 +192,7 @@ define all the classes it contains. But instead of an ordinary Python program,
 let&#8217;s use Jython, inside of Java. This turns out to be remarkably simple: you
 import some Jython classes, create a <strong>PythonInterpreter</strong> object, and cause the
 Python files to be loaded:</p>
-<div class="highlight-java"><div class="highlight"><pre><span class="c">// jython/GreenHouseController.java</span>
+<div class="highlight-java"><div class="highlight"><pre><span class="c">// Jython/GreenHouseController.java</span>
 <span class="kn">package</span> <span class="n">jython</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.python.util.PythonInterpreter</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.python.core.*</span><span class="o">;</span>
@@ -227,7 +227,7 @@ executing <strong>GreenHouseLanguage.py</strong>, all the classes from that file
 into our <strong>PythonInterpreter</strong> object, and so it now &#8220;holds&#8221; the greenhouse
 controller language. The <strong>Schedule.ghs</strong> file is the one created by the end
 user to control the greenhouse. Here&#8217;s an example:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># jython/Schedule.ghs</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Jython/Schedule.ghs</span>
 <span class="n">Bell</span><span class="p">(</span><span class="mf">7.00</span><span class="p">)</span>
 <span class="n">ThermostatDay</span><span class="p">(</span><span class="mf">6.00</span><span class="p">)</span>
 <span class="n">WaterOn</span><span class="p">(</span><span class="mf">3.30</span><span class="p">)</span>
@@ -258,7 +258,7 @@ deceptively simple method: <strong>set( )</strong>. However, <strong>set( )</str
 data types and performs conversions upon them.  The following example is a
 reasonably thorough exercise of the various <strong>set( )</strong> possibilities, along with
 comments that should give a fairly complete explanation:</p>
-<div class="highlight-java"><div class="highlight"><pre><span class="c">// jython/PythonInterpreterSetting.java</span>
+<div class="highlight-java"><div class="highlight"><pre><span class="c">// Jython/PythonInterpreterSetting.java</span>
 <span class="c">// Passing data from Java to python when using</span>
 <span class="c">// the PythonInterpreter object.</span>
 <span class="kn">package</span> <span class="n">jython</span><span class="o">;</span>
@@ -404,7 +404,7 @@ dictionary, and so I wrote a utility called <strong>toPyDictionary( )</strong> a
 <strong>static</strong> method of <strong>net.mindview.python.PyUtil</strong>. This also includes
 utilities to extract a Python array into a Java <strong>List</strong>, and a Python
 dictionary into a Java <strong>Map</strong>:</p>
-<div class="highlight-java"><div class="highlight"><pre><span class="c">// jython/PyUtil.java</span>
+<div class="highlight-java"><div class="highlight"><pre><span class="c">// Jython/PyUtil.java</span>
 <span class="c">// PythonInterpreter utilities</span>
 <span class="kn">package</span> <span class="n">net</span><span class="o">.</span><span class="na">mindview</span><span class="o">.</span><span class="na">python</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.python.util.PythonInterpreter</span><span class="o">;</span>
@@ -463,7 +463,7 @@ dictionary into a Java <strong>Map</strong>:</p>
 </pre></div>
 </div>
 <p>Here is the (black-box) unit testing code:</p>
-<div class="highlight-java"><div class="highlight"><pre><span class="c">// jython/Test.java</span>
+<div class="highlight-java"><div class="highlight"><pre><span class="c">// Jython/Test.java</span>
 <span class="kn">package</span> <span class="n">net</span><span class="o">.</span><span class="na">mindview</span><span class="o">.</span><span class="na">python</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.python.util.PythonInterpreter</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
@@ -530,7 +530,7 @@ manipulating strings and files, and so you will commonly want to extract the
 results as an array of strings. For example, you can do a wildcard expansion of
 file names using Python&#8217;s <strong>glob( )</strong>, as shown further down in the following
 code:</p>
-<div class="highlight-java"><div class="highlight"><pre><span class="c">// jython/PythonInterpreterGetting.java</span>
+<div class="highlight-java"><div class="highlight"><pre><span class="c">// Jython/PythonInterpreterGetting.java</span>
 <span class="c">// Getting data from the PythonInterpreter object.</span>
 <span class="kn">package</span> <span class="n">jython</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">org.python.util.PythonInterpreter</span><span class="o">;</span>
@@ -655,7 +655,7 @@ important data structures back and forth between Java and Python.</p>
 <h3>Multiple Interpreters<a class="headerlink" href="#multiple-interpreters" title="Permalink to this headline">¶</a></h3>
 <p>It&#8217;s also worth noting that you can have multiple <strong>PythonInterpreter</strong> objects
 in a program, and each one has its own name space:</p>
-<div class="highlight-java"><div class="highlight"><pre><span class="c">// jython/MultipleJythons.java</span>
+<div class="highlight-java"><div class="highlight"><pre><span class="c">// Jython/MultipleJythons.java</span>
 <span class="c">// You can run multiple interpreters, each</span>
 <span class="c">// with its own name space.</span>
 <span class="kn">package</span> <span class="n">jython</span><span class="o">;</span>
@@ -697,7 +697,7 @@ things about Jython is that it makes Java classes almost transparently available
 from within Jython. Basically, a Java class looks like a Python class. This is
 true for standard Java library classes as well as classes that you create
 yourself, as you can see here:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># jython/JavaClassInPython.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Jython/JavaClassInPython.py</span>
 <span class="c"># run with: jython.bat JavaClassInPython.py</span>
 <span class="c"># Using Java classes within Jython</span>
 <span class="kn">from</span> <span class="nn">java.util</span> <span class="kn">import</span> <span class="n">Date</span><span class="p">,</span> <span class="n">HashSet</span><span class="p">,</span> <span class="n">HashMap</span>
@@ -796,7 +796,7 @@ will be treated as if they were defined in different packages so they can only
 see each other&#8217;s public methods.</p>
 <p>Java packages translate into Python modules, and Python must import a module in
 order to be able to use the Java class. Here is the Java code for <strong>JavaClass</strong>:</p>
-<div class="highlight-java"><div class="highlight"><pre><span class="c">// jython/javaclass/JavaClass.java</span>
+<div class="highlight-java"><div class="highlight"><pre><span class="c">// Jython/javaclass/JavaClass.java</span>
 <span class="kn">package</span> <span class="n">jython</span><span class="o">.</span><span class="na">javaclass</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">junit.framework.*</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
@@ -869,7 +869,7 @@ inheritance. In addition, Python shorthand simplifies coding.</p>
 <em>Thinking in Java</em> (you presumably have already downloaded and installed the
 source code for that book from <a class="reference external" href="http://www.MindviewInc.com">www.MindviewInc.com</a>, since a number of examples in this book use
 libraries from that book). Here is its conversion to Jython:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># jython/PythonSwing.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Jython/PythonSwing.py</span>
 <span class="c"># The HTMLButton.java example from</span>
 <span class="c"># &quot;Thinking in Java, 2nd edition,&quot; Chapter 13,</span>
 <span class="c"># converted into Jython.</span>
@@ -916,7 +916,7 @@ setting.</p>
 <p>You can easily inherit from standard Java library classes in Jython. Here&#8217;s the
 <strong>Dialogs.java</strong> example from Chapter 13 of <em>Thinking in Java</em>, converted into
 Jython:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># jython/PythonDialogs.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Jython/PythonDialogs.py</span>
 <span class="c"># Dialogs.java from &quot;Thinking in Java, 2nd</span>
 <span class="c"># edition,&quot; Chapter 13, converted into Jython.</span>
 <span class="c"># Don&#39;t run this as part of the automatic make:</span>
@@ -1007,7 +1007,7 @@ the Python file is used to build a Java <strong>.class</strong> file, so the cla
 the desired makefile target. To accomplish this, the default makefile command is
 replaced using the &#8216;<strong>=M</strong>&#8216; directive (notice how you can break across lines
 using &#8216;<strong>\</strong>&#8216;):</p>
-<div class="highlight-python"><pre># jython/PythonToJavaClass.py
+<div class="highlight-python"><pre># Jython/PythonToJavaClass.py
 #=T python\java\test\PythonToJavaClass.class
 #=M jythonc.bat --package python.java.test \
 #=M PythonToJavaClass.py
@@ -1113,7 +1113,7 @@ Python code. This also introduces the &#8216;<strong>=D</strong>&#8216; directiv
 builder tool, which specifies a dependency in addition to those detected by the
 tool. Here, you can&#8217;t compile <strong>TestPythonToJavaClass.java</strong> until
 <strong>PythonToJavaClass.class</strong> is available:</p>
-<div class="highlight-java"><div class="highlight"><pre><span class="c">// jython/TestPythonToJavaClass.java</span>
+<div class="highlight-java"><div class="highlight"><pre><span class="c">// Jython/TestPythonToJavaClass.java</span>
 <span class="c">//+D python\java\test\PythonToJavaClass.class</span>
 <span class="kn">package</span> <span class="n">jython</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">java.lang.reflect.*</span><span class="o">;</span>
@@ -1291,7 +1291,7 @@ private.</td></tr>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="index.html">
-              <img class="logo" src="_static/Logo.png" alt="Logo"/>
+              <img class="logo" src="_static/cover.png" alt="Logo"/>
             </a></p>
     <font color="Red">This book is in early development; you will find parts that are incorrect &amp; incomplete.</font>
     
@@ -1360,12 +1360,12 @@ private.</td></tr>
         <li class="right" >
           <a href="CoroutinesAndConcurrency.html" title="Coroutines &amp; Concurrency"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Python 3 Patterns & Idioms</a> &raquo;</li>
+        <li><a href="index.html">Python 3 Patterns, Recipes and Idioms</a> &raquo;</li>
       </ul>
     </div>
     <div class="footer">
       &copy; Copyright 2008, Creative Commons Attribution-Share Alike 3.0.
-      Last updated on Nov 12, 2008.
+      Last updated on Nov 27, 2008.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.5.
     </div>
   </body>

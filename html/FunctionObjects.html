@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Function Objects &mdash; Python 3 Patterns & Idioms</title>
+    <title>Function Objects &mdash; Python 3 Patterns, Recipes and Idioms</title>
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="Python 3 Patterns & Idioms" href="index.html" />
+    <link rel="top" title="Python 3 Patterns, Recipes and Idioms" href="index.html" />
     <link rel="next" title="Changing the Interface" href="ChangeInterface.html" />
     <link rel="prev" title="Factory: Encapsulating Object Creation" href="Factory.html" />
   </head>
@@ -36,7 +36,7 @@
         <li class="right" >
           <a href="Factory.html" title="Factory: Encapsulating Object Creation"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Python 3 Patterns & Idioms</a> &raquo;</li>
+        <li><a href="index.html">Python 3 Patterns, Recipes and Idioms</a> &raquo;</li>
       </ul>
     </div>
     <div class="document">
@@ -61,7 +61,7 @@ the function object is repeated in a number of patterns in that book.</p>
 wrapping a method in an object, you can pass it to other methods or objects as a
 parameter, to tell them to perform this particular operation in the process of
 fulfilling your request:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># functionObjects/CommandPattern.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># FunctionObjects/CommandPattern.py</span>
 
 <span class="k">class</span> <span class="nc">Command</span><span class="p">:</span>
     <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="k">pass</span>
@@ -124,7 +124,7 @@ program, whereas <em>Strategy</em>&#8216;s flexibility is at run time.</p>
 <p><em>Strategy</em> also adds a &#8220;Context&#8221; which can be a surrogate class that controls
 the selection and use of the particular strategy object-just like <em>State</em>!
 Here&#8217;s what it looks like:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># functionObjects/StrategyPattern.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># FunctionObjects/StrategyPattern.py</span>
 
 <span class="c"># The strategy interface:</span>
 <span class="k">class</span> <span class="nc">FindMinima</span><span class="p">:</span>
@@ -214,7 +214,7 @@ separate the chain-management parts of the implementation from the various
 find a solution. <em>Chain of Responsibility</em> provides a way to do this by chaining
 the <em>Strategy</em> objects together and providing a mechanism for them to
 automatically recurse through each one in the chain:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># functionObjects/ChainOfResponsibility.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># FunctionObjects/ChainOfResponsibility.py</span>
 
 <span class="c"># Carry the information into the strategy:</span>
 <span class="k">class</span> <span class="nc">Messenger</span><span class="p">:</span> <span class="k">pass</span>
@@ -351,7 +351,7 @@ is often redundant.</td></tr>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="index.html">
-              <img class="logo" src="_static/Logo.png" alt="Logo"/>
+              <img class="logo" src="_static/cover.png" alt="Logo"/>
             </a></p>
     <font color="Red">This book is in early development; you will find parts that are incorrect &amp; incomplete.</font>
     
@@ -402,12 +402,12 @@ is often redundant.</td></tr>
         <li class="right" >
           <a href="Factory.html" title="Factory: Encapsulating Object Creation"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Python 3 Patterns & Idioms</a> &raquo;</li>
+        <li><a href="index.html">Python 3 Patterns, Recipes and Idioms</a> &raquo;</li>
       </ul>
     </div>
     <div class="footer">
       &copy; Copyright 2008, Creative Commons Attribution-Share Alike 3.0.
-      Last updated on Nov 12, 2008.
+      Last updated on Nov 27, 2008.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.5.
     </div>
   </body>

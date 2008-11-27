@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Factory: Encapsulating Object Creation &mdash; Python 3 Patterns & Idioms</title>
+    <title>Factory: Encapsulating Object Creation &mdash; Python 3 Patterns, Recipes and Idioms</title>
     <link rel="stylesheet" href="_static/default.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript">
@@ -19,7 +19,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="top" title="Python 3 Patterns & Idioms" href="index.html" />
+    <link rel="top" title="Python 3 Patterns, Recipes and Idioms" href="index.html" />
     <link rel="next" title="Function Objects" href="FunctionObjects.html" />
     <link rel="prev" title="Iterators: Decoupling Algorithms from Containers" href="Iterators.html" />
   </head>
@@ -36,7 +36,7 @@
         <li class="right" >
           <a href="Iterators.html" title="Iterators: Decoupling Algorithms from Containers"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Python 3 Patterns & Idioms</a> &raquo;</li>
+        <li><a href="index.html">Python 3 Patterns, Recipes and Idioms</a> &raquo;</li>
       </ul>
     </div>
     <div class="document">
@@ -73,7 +73,7 @@ be the most universally useful kinds of design patterns.</p>
 <h2>Simple Factory Method<a class="headerlink" href="#simple-factory-method" title="Permalink to this headline">¶</a></h2>
 <p>As an example, let&#8217;s revisit the <strong>Shape</strong> system.</p>
 <p>One approach is to make the factory a <strong>static</strong> method of the base class:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># factory/shapefact1/ShapeFactory1.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Factory/shapefact1/ShapeFactory1.py</span>
 <span class="c"># A simple static factory method.</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">generators</span>
 <span class="kn">import</span> <span class="nn">random</span>
@@ -162,7 +162,7 @@ have wasteful execution (as you would if this were an ordinary function).</p>
 <h3>Preventing direct creation<a class="headerlink" href="#preventing-direct-creation" title="Permalink to this headline">¶</a></h3>
 <p>To disallow direct access to the classes, you can nest the classes within the
 factory method, like this:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># factory/shapefact1/NestedShapeFactory.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Factory/shapefact1/NestedShapeFactory.py</span>
 <span class="kn">import</span> <span class="nn">random</span>
 
 <span class="k">class</span> <span class="nc">Shape</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
@@ -207,7 +207,7 @@ instead just repeats the example used for the <em>Abstract Factory</em> (you&#82
 example of this in the next section). Here is <strong>ShapeFactory1.py</strong> modified so
 the factory methods are in a separate class as virtual functions. Notice also
 that the specific <strong>Shape</strong> classes are dynamically loaded on demand:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># factory/shapefact2/ShapeFactory2.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Factory/shapefact2/ShapeFactory2.py</span>
 <span class="c"># Polymorphic factory methods.</span>
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">generators</span>
 <span class="kn">import</span> <span class="nn">random</span>
@@ -285,7 +285,7 @@ in one place, the effect of changing from one GUI to another.</p>
 <p>As another example suppose you are creating a general-purpose gaming environment
 and you want to be able to support different types of games. Here&#8217;s how it might
 look using an abstract factory:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># factory/Games.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Factory/Games.py</span>
 <span class="c"># An example of the Abstract Factory pattern.</span>
 
 <span class="k">class</span> <span class="nc">Obstacle</span><span class="p">:</span>
@@ -355,7 +355,7 @@ both of which will be explained later.</p>
 example) is unnecessary - it&#8217;s only required for languages that have static type
 checking. As long as the concrete Python classes follow the form of the required
 classes, we don&#8217;t need any base classes:</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="c"># factory/Games2.py</span>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># Factory/Games2.py</span>
 <span class="c"># Simplified Abstract Factory.</span>
 
 <span class="k">class</span> <span class="nc">Kitty</span><span class="p">:</span>
@@ -432,7 +432,7 @@ object can create all the shapes: circles, squares, triangles etc.).</li>
       <div class="sphinxsidebar">
         <div class="sphinxsidebarwrapper">
             <p class="logo"><a href="index.html">
-              <img class="logo" src="_static/Logo.png" alt="Logo"/>
+              <img class="logo" src="_static/cover.png" alt="Logo"/>
             </a></p>
     <font color="Red">This book is in early development; you will find parts that are incorrect &amp; incomplete.</font>
     
@@ -486,12 +486,12 @@ object can create all the shapes: circles, squares, triangles etc.).</li>
         <li class="right" >
           <a href="Iterators.html" title="Iterators: Decoupling Algorithms from Containers"
              accesskey="P">previous</a> |</li>
-        <li><a href="index.html">Python 3 Patterns & Idioms</a> &raquo;</li>
+        <li><a href="index.html">Python 3 Patterns, Recipes and Idioms</a> &raquo;</li>
       </ul>
     </div>
     <div class="footer">
       &copy; Copyright 2008, Creative Commons Attribution-Share Alike 3.0.
-      Last updated on Nov 12, 2008.
+      Last updated on Nov 27, 2008.
       Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 0.5.
     </div>
   </body>
